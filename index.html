@@ -189,7 +189,8 @@
 
     .hero-image {
       flex: 1;
-      min-width: 300px;
+      min-width: 280px;
+      max-width: 350px;
       display: flex;
       justify-content: center;
       animation: fadeInRight 1s ease;
@@ -201,8 +202,10 @@
     }
 
     .profile-img {
-      width: 320px;
-      height: 320px;
+      width: 100%;
+      max-width: 280px;
+      height: auto;
+      aspect-ratio: 1;
       border-radius: 50%;
       object-fit: cover;
       border: 5px solid var(--accent);
@@ -455,8 +458,8 @@
       }
 
       .profile-img {
-        width: 280px;
-        height: 280px;
+        max-width: 240px;
+        border: 4px solid var(--accent);
       }
 
       .projects {
@@ -550,8 +553,8 @@
       }
 
       .profile-img {
-        width: 220px;
-        height: 220px;
+        max-width: 200px;
+        border: 3px solid var(--accent);
       }
 
       .section {
@@ -638,8 +641,8 @@
       }
 
       .profile-img {
-        width: 180px;
-        height: 180px;
+        max-width: 170px;
+        border: 3px solid var(--accent);
       }
 
       .section h2 {
@@ -675,8 +678,8 @@
       }
 
       .profile-img {
-        width: 160px;
-        height: 160px;
+        max-width: 150px;
+        border: 2px solid var(--accent);
       }
 
       .section h2 {
@@ -716,7 +719,7 @@
       <a href="#projects" class="btn">View My Work</a>
     </div>
     <div class="hero-image">
-      <img src="assets/hero.png">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Cdefs%3E%3CradialGradient id='grad1' cx='50%25' cy='50%25' r='50%25'%3E%3Cstop offset='0%25' style='stop-color:%23667eea;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23764ba2;stop-opacity:1' /%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='200' cy='200' r='180' fill='url(%23grad1)' /%3E%3Ctext x='200' y='200' font-family='Arial' font-size='120' fill='white' text-anchor='middle' dy='.3em'%3EAR%3C/text%3E%3C/svg%3E" alt="Abdul Rehman" class="profile-img" id="profileImage">
     </div>
   </section>
 
