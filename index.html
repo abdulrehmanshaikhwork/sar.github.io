@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Abdul Rehman | Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --bg: #0a0e27;
@@ -96,7 +97,24 @@
       background-clip: text;
     }
 
+    /* Mobile Menu Styles */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 28px;
+      cursor: pointer;
+      padding: 5px;
+    }
+
     nav {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .nav-links {
       display: flex;
       align-items: center;
       gap: 30px;
@@ -187,12 +205,13 @@
       margin-bottom: 30px;
     }
 
+    /* HERO IMAGE RESPONSIVE */
     .hero-image {
       flex: 1;
       min-width: 280px;
-      max-width: 350px;
       display: flex;
       justify-content: center;
+      align-items: center;
       animation: fadeInRight 1s ease;
     }
 
@@ -202,10 +221,8 @@
     }
 
     .profile-img {
-      width: 100%;
-      max-width: 280px;
-      height: auto;
-      aspect-ratio: 1;
+      width: clamp(150px, 35vw, 280px);
+      height: clamp(150px, 35vw, 280px);
       border-radius: 50%;
       object-fit: cover;
       border: 5px solid var(--accent);
@@ -282,6 +299,7 @@
       color: var(--text-secondary);
       max-width: 800px;
       margin: 0 auto;
+      text-align: center;
     }
 
     .skills {
@@ -362,8 +380,6 @@
       line-height: 1.6;
     }
 
-
-
     #contact {
       background: var(--bg-secondary);
       border-radius: 20px;
@@ -376,6 +392,7 @@
     #contact p {
       font-size: 1.1rem;
       margin: 15px 0;
+      word-break: break-word;
     }
 
     #contact a {
@@ -409,67 +426,24 @@
       transform: translateY(0);
     }
 
-    /* Mobile Menu Styles */
-    .menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      color: var(--text);
-      font-size: 28px;
-      cursor: pointer;
-      padding: 5px;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 30px;
-    }
-
     /* Tablet and below */
     @media (max-width: 968px) {
-      header {
-        padding: 15px 5%;
-      }
+      header { padding: 15px 5%; }
+      header h1 { font-size: 1.5rem; }
 
-      header h1 {
-        font-size: 1.5rem;
-      }
+      .hero { padding: 80px 5% 60px; gap: 30px; }
+      .hero-text h2 { font-size: 2.8rem; }
+      .hero-text p { font-size: 1.1rem; }
 
-      .hero {
-        padding: 80px 5% 60px;
-        gap: 30px;
-      }
-
-      .hero-text h2 {
-        font-size: 2.8rem;
-      }
-
-      .hero-text p {
-        font-size: 1.1rem;
-      }
-
-      .section {
-        padding: 80px 5%;
-      }
-
-      .section h2 {
-        font-size: 2.3rem;
-      }
-
-      .profile-img {
-        max-width: 240px;
-        border: 4px solid var(--accent);
-      }
+      .section { padding: 80px 5%; }
+      .section h2 { font-size: 2.3rem; }
 
       .projects {
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 25px;
       }
 
-      #contact {
-        padding: 50px 40px;
-      }
+      #contact { padding: 50px 40px; }
     }
 
     /* Mobile devices */
@@ -479,9 +453,7 @@
         flex-wrap: wrap;
       }
 
-      header h1 {
-        font-size: 1.3rem;
-      }
+      header h1 { font-size: 1.3rem; }
 
       .menu-toggle {
         display: block;
@@ -519,13 +491,9 @@
         border-bottom: 1px solid rgba(255, 255, 255, 0.05);
       }
 
-      nav a::after {
-        display: none;
-      }
+      nav a::after { display: none; }
 
-      #themeToggle {
-        margin-top: 15px;
-      }
+      #themeToggle { margin-top: 15px; }
 
       .hero {
         padding: 60px 5% 40px;
@@ -533,163 +501,46 @@
         text-align: center;
       }
 
-      .hero-text {
-        min-width: 100%;
-      }
+      .hero-text { min-width: 100%; }
+      .hero-text h2 { font-size: 2.2rem; line-height: 1.3; }
+      .hero-text p { font-size: 1rem; margin-bottom: 25px; }
 
-      .hero-text h2 {
-        font-size: 2.2rem;
-        line-height: 1.3;
-      }
+      .hero-image { min-width: 100%; margin-bottom: 30px; }
 
-      .hero-text p {
-        font-size: 1rem;
-        margin-bottom: 25px;
-      }
+      .section { padding: 60px 5%; }
+      .section h2 { font-size: 2rem; margin-bottom: 35px; }
 
-      .hero-image {
-        min-width: 100%;
-        margin-bottom: 30px;
-      }
+      #about p { font-size: 1rem; line-height: 1.7; }
 
-      .profile-img {
-        max-width: 200px;
-        border: 3px solid var(--accent);
-      }
+      .skills { gap: 12px; }
+      .skills span { padding: 12px 20px; font-size: 0.9rem; }
 
-      .section {
-        padding: 60px 5%;
-      }
+      .projects { grid-template-columns: 1fr; gap: 25px; }
+      .card img { height: 200px; }
 
-      .section h2 {
-        font-size: 2rem;
-        margin-bottom: 35px;
-      }
+      .card-content { padding: 20px; }
+      .card h3 { font-size: 1.2rem; }
+      .card p { font-size: 0.95rem; }
 
-      #about p {
-        font-size: 1rem;
-        line-height: 1.7;
-        text-align: center;
-      }
+      #contact { padding: 40px 25px; }
+      #contact h2 { font-size: 1.8rem; }
+      #contact p { font-size: 1rem; }
 
-      .skills {
-        gap: 12px;
-      }
-
-      .skills span {
-        padding: 12px 20px;
-        font-size: 0.9rem;
-      }
-
-      .projects {
-        grid-template-columns: 1fr;
-        gap: 25px;
-      }
-
-      .card img {
-        height: 200px;
-      }
-
-      .card-content {
-        padding: 20px;
-      }
-
-      .card h3 {
-        font-size: 1.2rem;
-      }
-
-      .card p {
-        font-size: 0.95rem;
-      }
-
-      #contact {
-        padding: 40px 25px;
-      }
-
-      #contact h2 {
-        font-size: 1.8rem;
-      }
-
-      #contact p {
-        font-size: 1rem;
-        word-break: break-word;
-      }
-
-      footer {
-        padding: 30px 15px;
-        font-size: 0.9rem;
-      }
-
-      .btn {
-        padding: 12px 30px;
-        font-size: 0.95rem;
-      }
+      footer { padding: 30px 15px; font-size: 0.9rem; }
+      .btn { padding: 12px 30px; font-size: 0.95rem; }
     }
 
     /* Small mobile devices */
     @media (max-width: 480px) {
-      header h1 {
-        font-size: 1.1rem;
-      }
-
-      .hero-text h2 {
-        font-size: 1.8rem;
-      }
-
-      .hero-text p {
-        font-size: 0.95rem;
-      }
-
-      .profile-img {
-        max-width: 170px;
-        border: 3px solid var(--accent);
-      }
-
-      .section h2 {
-        font-size: 1.7rem;
-      }
-
-      .skills span {
-        padding: 10px 16px;
-        font-size: 0.85rem;
-      }
-
-      .card img {
-        height: 180px;
-      }
-
-      #contact {
-        padding: 30px 20px;
-      }
-
-      #contact h2 {
-        font-size: 1.6rem;
-      }
-
-      #contact p {
-        font-size: 0.9rem;
-      }
-    }
-
-    /* Extra small devices */
-    @media (max-width: 360px) {
-      .hero-text h2 {
-        font-size: 1.6rem;
-      }
-
-      .profile-img {
-        max-width: 150px;
-        border: 2px solid var(--accent);
-      }
-
-      .section h2 {
-        font-size: 1.5rem;
-      }
-
-      .btn {
-        padding: 10px 25px;
-        font-size: 0.9rem;
-      }
+      header h1 { font-size: 1.1rem; }
+      .hero-text h2 { font-size: 1.8rem; }
+      .hero-text p { font-size: 0.95rem; }
+      .section h2 { font-size: 1.7rem; }
+      .skills span { padding: 10px 16px; font-size: 0.85rem; }
+      .card img { height: 180px; }
+      #contact { padding: 30px 20px; }
+      #contact h2 { font-size: 1.6rem; }
+      #contact p { font-size: 0.9rem; }
     }
   </style>
 </head>
@@ -701,6 +552,7 @@
   <header>
     <h1>Abdul Rehman</h1>
     <button class="menu-toggle" id="menuToggle">☰</button>
+
     <nav id="navMenu">
       <div class="nav-links">
         <a href="#about">About</a>
@@ -718,17 +570,19 @@
       <p>Building data-driven solutions & real-world ML systems with cutting-edge technology.</p>
       <a href="#projects" class="btn">View My Work</a>
     </div>
+
     <div class="hero-image">
-      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Cdefs%3E%3CradialGradient id='grad1' cx='50%25' cy='50%25' r='50%25'%3E%3Cstop offset='0%25' style='stop-color:%23667eea;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23764ba2;stop-opacity:1' /%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='200' cy='200' r='180' fill='url(%23grad1)' /%3E%3Ctext x='200' y='200' font-family='Arial' font-size='120' fill='white' text-anchor='middle' dy='.3em'%3EAR%3C/text%3E%3C/svg%3E" alt="Abdul Rehman" class="profile-img" id="profileImage">
+      <!-- YOUR REAL IMAGE -->
+      <img src="assets/hero.png" alt="Abdul Rehman" class="profile-img" id="profileImage">
     </div>
   </section>
 
   <section id="about" class="section reveal">
     <h2>About Me</h2>
     <p>
-      I'm a passionate Python developer with expertise in data science and machine learning. 
-      I specialize in building robust solutions using Pandas, NumPy, scikit-learn, and Flask. 
-      My focus is on creating real-world applications that solve practical problems through 
+      I'm a passionate Python developer with expertise in data science and machine learning.
+      I specialize in building robust solutions using Pandas, NumPy, scikit-learn, and Flask.
+      My focus is on creating real-world applications that solve practical problems through
       innovative ML algorithms and efficient data processing.
     </p>
   </section>
@@ -794,7 +648,9 @@
     <h2>Get In Touch</h2>
     <p>📧 Email: <a href="mailto:abdulrehmanshaikhwork@gmail.com">abdulrehmanshaikhwork@gmail.com</a></p>
     <p>💻 GitHub: <a href="https://github.com/abdulrehmanshaikhwork" target="_blank">github.com/abdulrehmanshaikhwork</a></p>
-    <p style="margin-top: 30px; color: var(--text-secondary);">Feel free to reach out for collaborations or just a friendly chat about technology!</p>
+    <p style="margin-top: 30px; color: var(--text-secondary);">
+      Feel free to reach out for collaborations or just a friendly chat about technology!
+    </p>
   </section>
 
   <footer>
@@ -805,7 +661,7 @@
     // Mobile menu toggle
     const menuToggle = document.getElementById('menuToggle');
     const navMenu = document.getElementById('navMenu');
-    
+
     menuToggle.addEventListener('click', () => {
       navMenu.classList.toggle('active');
       menuToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
@@ -835,7 +691,7 @@
 
     // Scroll reveal animation
     const reveals = document.querySelectorAll(".reveal");
-    
+
     const revealOnScroll = () => {
       reveals.forEach(section => {
         const sectionTop = section.getBoundingClientRect().top;
@@ -847,13 +703,12 @@
     };
 
     window.addEventListener("scroll", revealOnScroll);
-    revealOnScroll(); // Initial check
+    revealOnScroll();
 
     // Theme toggle
     const toggle = document.getElementById("themeToggle");
     const body = document.body;
 
-    // Check for saved theme preference
     const savedTheme = localStorage.getItem("theme");
     if (savedTheme === "light") {
       body.classList.add("light");
@@ -867,7 +722,7 @@
       localStorage.setItem("theme", isLight ? "light" : "dark");
     });
 
-    // Smooth scrolling for navigation links
+    // Smooth scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -880,3 +735,4 @@
   </script>
 </body>
 </html>
+
