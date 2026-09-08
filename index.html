@@ -122,6 +122,18 @@
     font-weight:700;
     font-size:1.02rem;
   }
+  .brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.brand img {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    display: block;
+}
   .nav-links{
     display:flex;
     gap:26px;
@@ -169,6 +181,12 @@
     background:var(--teal-light);
     z-index:200;
   }
+  @media (max-width: 560px) {
+    .brand img {
+        width: 38px;
+        height: 38px;
+    }
+}
 
   /* Mobile full-screen menu */
   .mobile-menu{
@@ -607,7 +625,9 @@
 
 <nav class="nav">
   <div class="nav-inner">
-    <a href="#home" class="nav-brand">Shaikh Abdul Rehman</a>
+    <a href="#home" class="brand">
+    <img src="assets/images/sar-logo.png" alt="Shaikh Abdul Rehman - Data Analyst">
+</a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
