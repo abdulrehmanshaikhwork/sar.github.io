@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shaikh Abdul Rehman — Data Analyst</title>
+<meta name="description" content="Shaikh Abdul Rehman — Data Analyst / Business Analyst portfolio and freelance data services. SQL, Power BI, MySQL, Tableau, Excel.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-950:#0A1220;
+    --navy-900:#0F1B2D;
+    --navy-800:#16273F;
+    --teal:#1E7F76;
+    --teal-light:#2E9E8F;
+    --teal-tint:#E4F1EF;
+    --amber:#C97A2B;
+    --amber-tint:#F5E7D5;
+    --whatsapp:#25D366;
+    --whatsapp-dark:#1DA851;
+    --paper:#F4F6F9;
+    --panel:#FFFFFF;
+    --ink:#141C2B;
+    --muted:#57626F;
+    --rule:#DCE1E8;
+    --radius:4px;
+    --nav-h:68px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', system-ui, sans-serif;
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    margin:0 0 0.5em 0;
+    line-height:1.15;
+    color:var(--ink);
+  }
+  h2{ font-size:1.9rem; }
+  h3{ font-size:1.05rem; }
+
+  a{ color:var(--teal); }
+  p{ margin:0 0 1em 0; }
+  img{ max-width:100%; display:block; }
+
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--teal);
+    outline-offset:3px;
+  }
+
+  .mono{ font-family:'IBM Plex Mono', monospace; }
+
+  .wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  section{ scroll-margin-top:calc(var(--nav-h) + 16px); }
+
+  .section-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    color:var(--teal);
+    margin:0 0 10px 0;
+  }
+
+  .reveal{
+    opacity:0;
+    transform:translateY(18px);
+    transition:opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.is-visible{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  /* ---------------- NAV ---------------- */
+  .nav{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(10,18,32,0.92);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+  }
+  .nav-inner{
+    max-width:1120px;
+    margin:0 auto;
+    height:var(--nav-h);
+    padding:0 32px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .nav-brand{
+    color:#fff;
+    text-decoration:none;
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size:1.02rem;
+  }
+  .nav-links{
+    display:flex;
+    gap:26px;
+    list-style:none;
+    margin:0; padding:0;
+  }
+  .nav-links a{
+    color:#B7C2D0;
+    text-decoration:none;
+    font-size:0.9rem;
+    position:relative;
+    padding:4px 0;
+  }
+  .nav-links a::after{
+    content:"";
+    position:absolute;
+    left:0; bottom:-4px;
+    width:0%;
+    height:2px;
+    background:var(--teal-light);
+    transition:width 0.25s ease;
+  }
+  .nav-links a:hover, .nav-links a.active{ color:#fff; }
+  .nav-links a:hover::after, .nav-links a.active::after{ width:100%; }
+
+  .nav-cta{
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .nav-toggle{
+    display:none;
+    background:none;
+    border:1px solid rgba(255,255,255,0.25);
+    border-radius:var(--radius);
+    color:#fff;
+    padding:8px 10px;
+    cursor:pointer;
+  }
+  .scroll-progress{
+    position:fixed;
+    top:0; left:0;
+    height:2px;
+    width:0%;
+    background:var(--teal-light);
+    z-index:200;
+  }
+
+  /* Mobile full-screen menu */
+  .mobile-menu{
+    position:fixed;
+    inset:0;
+    background:var(--navy-950);
+    z-index:99;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content:center;
+    gap:22px;
+    padding:40px;
+    transform:translateY(-100%);
+    transition:transform 0.35s ease;
+  }
+  .mobile-menu.open{ transform:translateY(0); }
+  .mobile-menu a{
+    color:#fff;
+    text-decoration:none;
+    font-family:'Space Grotesk', sans-serif;
+    font-size:1.6rem;
+  }
+
+  /* ---------------- BUTTONS ---------------- */
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    text-decoration:none;
+    font-family:'IBM Plex Sans', sans-serif;
+    font-weight:500;
+    font-size:0.94rem;
+    padding:12px 22px;
+    border-radius:var(--radius);
+    border:1px solid transparent;
+    cursor:pointer;
+    transition:transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+  }
+  .btn:hover{ transform:translateY(-2px); }
+  .btn-whatsapp{ background:var(--whatsapp); color:#fff; }
+  .btn-whatsapp:hover{ background:var(--whatsapp-dark); }
+  .btn-teal{ background:var(--teal); color:#fff; }
+  .btn-teal:hover{ background:var(--teal-light); }
+  .btn-light{ background:rgba(255,255,255,0.1); color:#fff; border-color:rgba(255,255,255,0.35); }
+  .btn-light:hover{ background:rgba(255,255,255,0.18); border-color:#fff; }
+  .btn-outline{ background:transparent; color:var(--teal); border-color:var(--rule); }
+  .btn-outline:hover{ background:var(--teal-tint); border-color:var(--teal); }
+
+  /* ---------------- HERO ---------------- */
+  .hero{
+    position:relative;
+    background:linear-gradient(160deg, var(--navy-950) 0%, var(--navy-900) 45%, var(--navy-800) 100%);
+    color:#fff;
+    overflow:hidden;
+    padding:90px 0 70px 0;
+  }
+  .hero-blob{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(70px);
+    opacity:0.35;
+    animation:drift 22s ease-in-out infinite;
+    pointer-events:none;
+  }
+  .blob-1{ width:420px; height:420px; background:var(--teal); top:-140px; right:-80px; }
+  .blob-2{ width:340px; height:340px; background:var(--amber); bottom:-160px; left:-100px; animation-delay:-9s; }
+  @keyframes drift{
+    0%,100%{ transform:translate(0,0) scale(1); }
+    50%{ transform:translate(30px,-25px) scale(1.08); }
+  }
+
+  .hero-inner{
+    position:relative;
+    z-index:1;
+  }
+  .eyebrow-role{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.95rem;
+    color:var(--teal-light);
+    height:1.4em;
+  }
+  .hero h1{
+    font-size:3.1rem;
+    color:#fff;
+    margin-top:6px;
+  }
+  .tagrow{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin:22px 0 24px 0;
+  }
+  .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    padding:5px 10px;
+    border:1px solid rgba(255,255,255,0.25);
+    border-radius:var(--radius);
+    color:#E4E9EF;
+  }
+  .tag-light{
+    border-color:var(--rule);
+    color:var(--teal);
+    background:var(--teal-tint);
+  }
+  .hero-copy{
+    max-width:58ch;
+    color:#C3CBD6;
+    margin-bottom:32px;
+    font-size:1.02rem;
+  }
+  .cta-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-bottom:44px;
+  }
+
+  .kpi-strip{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:14px;
+  }
+  .kpi{
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.14);
+    border-radius:var(--radius);
+    padding:18px 16px;
+    backdrop-filter:blur(6px);
+    transition:transform 0.2s ease, background 0.2s ease;
+  }
+  .kpi:hover{ transform:translateY(-3px); background:rgba(255,255,255,0.1); }
+  .kpi-num{
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:600;
+    font-size:1.55rem;
+    color:#fff;
+    display:block;
+  }
+  .kpi-label{ font-size:0.8rem; color:#AEB8C4; margin-top:4px; }
+
+  /* ---------------- SECTIONS ---------------- */
+  .section{ padding:76px 0; }
+  .section-alt{ background:var(--panel); }
+  .section-band{
+    background:linear-gradient(135deg, var(--teal-tint), #EEF6F4);
+    border-top:1px solid var(--rule);
+    border-bottom:1px solid var(--rule);
+  }
+
+  .about-copy{ max-width:70ch; }
+  .about-copy p + p{ margin-top:1em; }
+
+  /* Skills */
+  .skills-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:18px;
+  }
+  .skill-panel{
+    background:var(--panel);
+    border:1px solid var(--rule);
+    border-radius:var(--radius);
+    padding:22px;
+    transition:transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .skill-panel:hover{
+    transform:translateY(-4px);
+    border-color:var(--teal);
+    box-shadow:0 14px 30px -18px rgba(20,28,43,0.35);
+  }
+  .skill-icon{
+    width:34px; height:34px;
+    color:var(--teal);
+    margin-bottom:12px;
+  }
+  .skill-panel p{ margin:0; color:var(--muted); font-size:0.92rem; }
+
+  /* Freelance services */
+  .services-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:18px;
+    margin-bottom:36px;
+  }
+  .service-card{
+    background:var(--panel);
+    border:1px solid var(--rule);
+    border-radius:6px;
+    padding:24px;
+    transition:transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .service-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 16px 34px -20px rgba(20,28,43,0.4);
+  }
+  .service-icon{
+    width:38px; height:38px;
+    color:var(--amber);
+    margin-bottom:14px;
+  }
+  .service-card h3{ margin-bottom:6px; }
+  .service-card p{ color:var(--muted); font-size:0.92rem; margin:0; }
+
+  .freelance-cta{
+    background:var(--navy-900);
+    border-radius:8px;
+    padding:34px 36px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+    flex-wrap:wrap;
+    color:#fff;
+  }
+  .freelance-cta h3{ color:#fff; margin-bottom:4px; }
+  .freelance-cta p{ color:#B7C2D0; margin:0; max-width:44ch; }
+
+  /* Primary project */
+  .project-head h2{ font-size:1.8rem; }
+  .case-block{ margin-bottom:24px; }
+  .case-block h3{ color:var(--teal); font-size:1rem; margin-bottom:8px; }
+  .case-block p{ margin:0; max-width:70ch; }
+  .case-block .mono{ color:var(--teal); font-weight:600; }
+  .project-links{
+    display:flex; gap:12px; flex-wrap:wrap;
+    margin:26px 0 40px 0;
+  }
+
+  .gallery-heading{ margin-bottom:16px; }
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:14px;
+  }
+  .gallery-item{
+    border:1px solid var(--rule);
+    border-radius:var(--radius);
+    overflow:hidden;
+    background:var(--panel);
+    cursor:pointer;
+    padding:0;
+    text-align:left;
+    transition:transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .gallery-item:hover{
+    transform:translateY(-4px);
+    box-shadow:0 16px 30px -18px rgba(20,28,43,0.4);
+  }
+  .gallery-item img{ width:100%; height:150px; object-fit:cover; object-position:top; }
+  .gallery-cap{
+    padding:10px 12px;
+    font-size:0.82rem;
+    color:var(--muted);
+    border-top:1px solid var(--rule);
+    display:block;
+  }
+
+  /* Lightbox */
+  .lightbox{
+    position:fixed; inset:0;
+    background:rgba(10,18,32,0.92);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:300;
+    padding:40px;
+  }
+  .lightbox.open{ display:flex; }
+  .lightbox img{
+    max-width:100%;
+    max-height:85vh;
+    border-radius:4px;
+    box-shadow:0 30px 60px rgba(0,0,0,0.5);
+  }
+  .lightbox-close{
+    position:absolute;
+    top:24px; right:32px;
+    background:rgba(255,255,255,0.1);
+    border:1px solid rgba(255,255,255,0.3);
+    color:#fff;
+    width:38px; height:38px;
+    border-radius:50%;
+    cursor:pointer;
+    font-size:1.1rem;
+  }
+  .lightbox-cap{
+    position:absolute;
+    bottom:28px;
+    color:#C3CBD6;
+    font-size:0.85rem;
+    font-family:'IBM Plex Mono', monospace;
+  }
+
+  /* Practice projects */
+  .practice-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+  }
+  .practice-card{
+    border:1px solid var(--rule);
+    border-radius:var(--radius);
+    background:var(--panel);
+    padding:22px;
+    transition:transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .practice-card:hover{ transform:translateY(-3px); box-shadow:0 14px 26px -18px rgba(20,28,43,0.35); }
+  .practice-tools{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.76rem;
+    color:var(--muted);
+    margin-bottom:10px;
+    display:block;
+  }
+  .practice-card p{ margin:0; font-size:0.94rem; }
+
+  /* Certifications */
+  .cert-list{ list-style:none; margin:0; padding:0; border-top:1px solid var(--rule); }
+  .cert-list li{
+    display:flex; justify-content:space-between; align-items:baseline;
+    padding:16px 2px; border-bottom:1px solid var(--rule);
+    flex-wrap:wrap; gap:6px;
+  }
+  .cert-name{ font-weight:500; }
+  .cert-issuer{ color:var(--muted); font-size:0.88rem; font-family:'IBM Plex Mono', monospace; }
+
+  /* Education */
+  .edu-meta{ color:var(--muted); font-size:0.92rem; margin-bottom:14px; }
+  .coursework{ display:flex; flex-wrap:wrap; gap:8px; }
+
+  /* Resume section */
+  .resume-panel{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:34px;
+    align-items:center;
+    background:var(--panel);
+    border:1px solid var(--rule);
+    border-radius:8px;
+    padding:28px;
+  }
+  .resume-thumb{
+    border:1px solid var(--rule);
+    border-radius:4px;
+    overflow:hidden;
+    box-shadow:0 18px 34px -22px rgba(20,28,43,0.45);
+  }
+  .resume-thumb img{ display:block; width:100%; }
+  .resume-text p{ color:var(--muted); max-width:52ch; }
+
+  /* Contact */
+  .contact-cta{
+    background:linear-gradient(160deg, var(--navy-950), var(--navy-800));
+    color:#fff;
+    padding:44px 40px;
+    border-radius:8px;
+    margin-bottom:34px;
+  }
+  .contact-cta h2{ color:#fff; }
+  .contact-cta p{ color:#C3CBD6; max-width:56ch; margin-bottom:24px; }
+
+  .contact-list{ list-style:none; margin:0; padding:0; }
+  .contact-list li{
+    display:flex; gap:18px; padding:13px 0;
+    border-bottom:1px solid var(--rule); align-items:baseline;
+  }
+  .contact-list li:first-child{ border-top:1px solid var(--rule); }
+  .contact-label{
+    width:110px; flex-shrink:0; color:var(--muted);
+    font-size:0.85rem; font-family:'IBM Plex Mono', monospace;
+  }
+  .contact-list a{ color:var(--ink); text-decoration:none; }
+  .contact-list a:hover{ color:var(--teal); text-decoration:underline; }
+
+  footer{
+    padding:28px 0 40px 0;
+    color:var(--muted);
+    font-size:0.82rem;
+    text-align:center;
+  }
+
+  /* ---------------- Responsive ---------------- */
+  @media (max-width:900px){
+    .wrap{ padding:0 20px; }
+    .nav-inner{ padding:0 20px; }
+    .nav-links{ display:none; }
+    .nav-toggle{ display:inline-flex; }
+    .hero h1{ font-size:2.2rem; }
+    .kpi-strip{ grid-template-columns:repeat(2,1fr); }
+    .skills-grid{ grid-template-columns:1fr 1fr; }
+    .services-grid{ grid-template-columns:1fr 1fr; }
+    .practice-grid{ grid-template-columns:1fr; }
+    .gallery-grid{ grid-template-columns:1fr 1fr; }
+    .resume-panel{ grid-template-columns:1fr; text-align:center; }
+    .resume-thumb{ max-width:200px; margin:0 auto; }
+    .freelance-cta{ flex-direction:column; align-items:flex-start; }
+    .section{ padding:56px 0; }
+  }
+  @media (max-width:560px){
+    .skills-grid{ grid-template-columns:1fr; }
+    .services-grid{ grid-template-columns:1fr; }
+    .gallery-grid{ grid-template-columns:1fr; }
+    .kpi-strip{ grid-template-columns:1fr 1fr; }
+    .hero h1{ font-size:1.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#home" class="nav-brand">Shaikh Abdul Rehman</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#freelance">Freelance</a></li>
+      <li><a href="#primary-project">Project</a></li>
+      <li><a href="#certifications">Certs</a></li>
+      <li><a href="#resume">Resume</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="btn btn-whatsapp" id="whatsapp-nav" href="#" target="_blank" rel="noopener" style="padding:9px 16px; font-size:0.85rem;">WhatsApp</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about">About</a>
+  <a href="#skills">Skills</a>
+  <a href="#freelance">Freelance</a>
+  <a href="#primary-project">Project</a>
+  <a href="#certifications">Certifications</a>
+  <a href="#resume">Resume</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<!-- HERO -->
+<header class="hero" id="home">
+  <div class="hero-blob blob-1"></div>
+  <div class="hero-blob blob-2"></div>
+  <div class="wrap hero-inner">
+    <p class="eyebrow-role mono" id="roleRotator">Data Analyst</p>
+    <h1>Shaikh Abdul Rehman</h1>
+
+    <div class="tagrow">
+      <span class="tag">SQL</span>
+      <span class="tag">Power BI</span>
+      <span class="tag">MySQL</span>
+      <span class="tag">Tableau</span>
+      <span class="tag">Excel</span>
+      <span class="tag">DAX</span>
+    </div>
+
+    <p class="hero-copy">
+      I build end-to-end analytics solutions — from cleaning raw data and designing relational
+      databases, through SQL analysis and Power BI dashboards, to management-ready business
+      insights. Currently completing a BCA, and available for entry-level roles and freelance
+      data work.
+    </p>
+
+    <div class="cta-row">
+      <a class="btn btn-whatsapp" id="whatsapp-cta" href="#" target="_blank" rel="noopener">
+        Message on WhatsApp
+      </a>
+      <a class="btn btn-light" href="assets/Shaikh_Abdul_Rehman_Resume.pdf" download>
+        Download resume (PDF)
+      </a>
+      <a class="btn btn-light" href="#primary-project">View featured project</a>
+    </div>
+
+    <div class="kpi-strip">
+      <div class="kpi"><span class="kpi-num mono" data-target="350">0</span><span class="kpi-label">Projects analyzed</span></div>
+      <div class="kpi"><span class="kpi-num mono" data-target="1800">0</span><span class="kpi-label">Support tickets</span></div>
+      <div class="kpi"><span class="kpi-num mono" data-target="180">0</span><span class="kpi-label">Unique clients</span></div>
+      <div class="kpi"><span class="kpi-num mono" data-prefix="$" data-suffix="M" data-decimal="1" data-target="75.9">0</span><span class="kpi-label">Project value analyzed</span></div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ABOUT -->
+  <section id="about" class="section section-alt">
+    <div class="wrap">
+      <p class="section-label reveal">About</p>
+      <h2 class="reveal">Summary</h2>
+      <div class="about-copy reveal">
+        <p>
+          I'm a data analyst with hands-on, project-based experience building complete analytics
+          workflows: cleaning messy multi-table data, designing relational databases, writing SQL
+          for business analysis, and building interactive Power BI dashboards with DAX. My focus is
+          translating raw operational data into KPI dashboards and insights that support real
+          business decisions — profitability, delivery performance, SLA compliance, and workforce
+          productivity.
+        </p>
+        <p>
+          I'm also comfortable with Business Analyst work such as requirements gathering and
+          stakeholder reporting, and I use AI-assisted tools to structure findings and communicate
+          results clearly. I'm currently completing a BCA (expected July 2028) and open to
+          full-time, entry-level Data Analyst or Business Analyst roles — and to freelance data
+          projects — with flexibility on location and schedule.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="section">
+    <div class="wrap">
+      <p class="section-label reveal">Skills</p>
+      <h2 class="reveal">Technical skills</h2>
+      <div class="skills-grid">
+        <div class="skill-panel reveal">
+          <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"/></svg>
+          <h3>Databases &amp; query</h3>
+          <p>MySQL, SQL — joins, aggregations, KPI queries, relational database design</p>
+        </div>
+        <div class="skill-panel reveal">
+          <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="12" width="4" height="8"/><rect x="10" y="7" width="4" height="13"/><rect x="17" y="3" width="4" height="17"/></svg>
+          <h3>BI &amp; visualization</h3>
+          <p>Power BI — data modeling, DAX, interactive dashboards; Tableau; Excel dashboards</p>
+        </div>
+        <div class="skill-panel reveal">
+          <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>
+          <h3>Spreadsheet &amp; reporting</h3>
+          <p>Advanced Excel — VLOOKUP, INDEX-MATCH, pivot tables, data validation; stakeholder &amp; management reporting</p>
+        </div>
+        <div class="skill-panel reveal">
+          <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 4L3 12l5 8M16 4l5 8-5 8"/></svg>
+          <h3>Programming</h3>
+          <p>Python — Pandas, NumPy</p>
+        </div>
+        <div class="skill-panel reveal">
+          <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+          <h3>Analysis methods</h3>
+          <p>Data cleaning, data quality checks, KPI development, profitability analysis, SLA analysis, ad-hoc analysis, requirements gathering</p>
+        </div>
+        <div class="skill-panel reveal">
+          <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l1.8 4.6L18 9l-4.2 1.4L12 15l-1.8-4.6L6 9l4.2-1.4L12 3z"/><path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9L19 15z"/></svg>
+          <h3>AI-assisted reporting</h3>
+          <p>Using ChatGPT / Copilot to structure analytical findings and support business-focused reporting</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FREELANCE SERVICES -->
+  <section id="freelance" class="section section-band">
+    <div class="wrap">
+      <p class="section-label reveal">Freelance</p>
+      <h2 class="reveal">Data services I offer</h2>
+      <p class="reveal" style="max-width:62ch; color:var(--muted); margin-bottom:36px;">
+        Available for freelance and short-term project work, on top of full-time roles. If you need
+        a spreadsheet fixed, a dataset cleaned, or a dashboard built, here's where I can help.
+      </p>
+
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 9v12"/></svg>
+          <h3>Excel automation &amp; dashboards</h3>
+          <p>Formulas, pivot tables, and validation-checked spreadsheets that stay clean and update themselves — no more manual re-work every week.</p>
+        </div>
+        <div class="service-card reveal">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v4H4zM4 10h10v4H4zM4 16h14v4H4z"/></svg>
+          <h3>Data cleaning &amp; preparation</h3>
+          <p>Messy, duplicated, or inconsistent data cleaned, validated, and structured so it's actually ready for analysis.</p>
+        </div>
+        <div class="service-card reveal">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="12" width="4" height="8"/><rect x="10" y="7" width="4" height="13"/><rect x="17" y="3" width="4" height="17"/></svg>
+          <h3>Power BI &amp; Tableau dashboards</h3>
+          <p>Interactive dashboards with KPI cards, drillable visuals, and DAX measures built around the metrics that matter to your business.</p>
+        </div>
+        <div class="service-card reveal">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"/></svg>
+          <h3>SQL &amp; database analysis</h3>
+          <p>Relational database design, SQL queries, and KPI reporting across multi-table business datasets.</p>
+        </div>
+        <div class="service-card reveal">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 19h16M7 15v-4M12 15V7M17 15v-7"/></svg>
+          <h3>Business &amp; stakeholder reporting</h3>
+          <p>Clear, management-ready reports — profitability, delivery performance, and operational KPIs explained in plain business language.</p>
+        </div>
+        <div class="service-card reveal">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+          <h3>Ad-hoc &amp; custom data requests</h3>
+          <p>A one-off data question or a specific report you need answered? I'll scope it and deliver a clear result, fast.</p>
+        </div>
+      </div>
+
+      <div class="freelance-cta reveal">
+        <div>
+          <h3>Need help with your data?</h3>
+          <p>Tell me what you're working with and what you need — I'll reply on WhatsApp with next steps.</p>
+        </div>
+        <a class="btn btn-whatsapp" id="whatsapp-freelance" href="#" target="_blank" rel="noopener">
+          Hire me on WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRIMARY PROJECT -->
+  <section id="primary-project" class="section section-alt">
+    <div class="wrap">
+      <p class="section-label reveal">Featured project</p>
+      <div class="project-head reveal">
+        <h2>IT Services Business Performance &amp; Client Analytics Dashboard</h2>
+        <div class="tagrow">
+          <span class="tag tag-light">Excel</span>
+          <span class="tag tag-light">MySQL</span>
+          <span class="tag tag-light">SQL</span>
+          <span class="tag tag-light">Power BI</span>
+          <span class="tag tag-light">DAX</span>
+        </div>
+      </div>
+
+      <div class="case-block reveal">
+        <h3>The scope</h3>
+        <p>
+          An end-to-end analytics solution across <span class="mono">5</span> relational tables covering
+          <span class="mono">180</span> unique clients, <span class="mono">150</span> employees,
+          <span class="mono">350</span> projects, and <span class="mono">1,800</span> support tickets —
+          analyzing profitability, delivery performance, SLA compliance, customer experience, and
+          workforce productivity.
+        </p>
+      </div>
+
+      <div class="case-block reveal">
+        <h3>Data quality</h3>
+        <p>
+          Designed the relational data model in MySQL and ran data-quality checks: identified
+          <span class="mono">2</span> duplicate client records (<span class="mono">182</span> raw rows
+          → <span class="mono">180</span> unique clients) and classified <span class="mono">4</span>
+          records with missing Industry values as "Unknown" rather than assuming values.
+        </p>
+      </div>
+
+      <div class="case-block reveal">
+        <h3>Analysis</h3>
+        <p>
+          Wrote SQL queries — multi-table joins, aggregations, filtering — and Power BI DAX measures
+          to calculate core business KPIs: total profit (~<span class="mono">$75.9M</span>), profit margin
+          (~<span class="mono">32.7%</span>), late projects (<span class="mono">149</span>,
+          ~<span class="mono">42.6%</span> of total), SLA breach %, average resolution time, and
+          employee hours utilization.
+        </p>
+      </div>
+
+      <div class="case-block reveal">
+        <h3>Dashboard &amp; reporting</h3>
+        <p>
+          Built a Power BI data model with relationships across all five tables and designed a five-page
+          interactive dashboard — Executive Overview, Project Analytics, IT Support Analytics, Employee
+          Analytics, and Management Insights — with KPI cards, slicers, and drillable visuals, using
+          AI-assisted reporting to translate outputs into concise, management-focused recommendations.
+        </p>
+      </div>
+
+      <div class="project-links reveal">
+        <a class="btn btn-teal" href="https://github.com/abdulrehmanshaikhwork/IT-Services-Business-Analytics" target="_blank" rel="noopener">
+          View project &amp; SQL scripts on GitHub
+        </a>
+        <a class="btn btn-outline" href="assets/IT-Services-Dashboard.pdf" target="_blank" rel="noopener">
+          Open full dashboard PDF
+        </a>
+      </div>
+
+      <h3 class="gallery-heading reveal">Dashboard preview</h3>
+      <div class="gallery-grid">
+        <button class="gallery-item reveal" data-full="assets/images/dashboard-1-executive-overview.jpg" data-cap="Executive Overview">
+          <img src="assets/images/dashboard-1-executive-overview.jpg" alt="Executive Overview dashboard page">
+          <span class="gallery-cap">Executive Overview</span>
+        </button>
+        <button class="gallery-item reveal" data-full="assets/images/dashboard-2-project-analytics.jpg" data-cap="Project Analytics">
+          <img src="assets/images/dashboard-2-project-analytics.jpg" alt="Project Analytics dashboard page">
+          <span class="gallery-cap">Project Analytics</span>
+        </button>
+        <button class="gallery-item reveal" data-full="assets/images/dashboard-3-it-support-analytics.jpg" data-cap="IT Support Analytics">
+          <img src="assets/images/dashboard-3-it-support-analytics.jpg" alt="IT Support Analytics dashboard page">
+          <span class="gallery-cap">IT Support Analytics</span>
+        </button>
+        <button class="gallery-item reveal" data-full="assets/images/dashboard-4-employee-analytics.jpg" data-cap="Employee Analytics">
+          <img src="assets/images/dashboard-4-employee-analytics.jpg" alt="Employee Analytics dashboard page">
+          <span class="gallery-cap">Employee Analytics</span>
+        </button>
+        <button class="gallery-item reveal" data-full="assets/images/dashboard-5-management-insights.jpg" data-cap="Management Insights & Recommendations">
+          <img src="assets/images/dashboard-5-management-insights.jpg" alt="Management Insights dashboard page">
+          <span class="gallery-cap">Management Insights &amp; Recommendations</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRACTICE PROJECTS -->
+  <section id="practice-projects" class="section">
+    <div class="wrap">
+      <p class="section-label reveal">Practice projects</p>
+      <h2 class="reveal">Additional work</h2>
+      <div class="practice-grid">
+        <div class="practice-card reveal">
+          <h3>Retail Business Data Cleanup &amp; Analysis</h3>
+          <span class="practice-tools">Excel · Power BI · SQL</span>
+          <p>Cleaned and standardized a retail dataset of ~20,000 records (duplicates, formatting, missing values) and built a Power BI dashboard with KPI visuals for sales trends, category performance, and regional breakdown.</p>
+        </div>
+        <div class="practice-card reveal">
+          <h3>Sales &amp; Performance Dashboard</h3>
+          <span class="practice-tools">Tableau · Excel</span>
+          <p>Analyzed sales data to identify top-performing categories and outliers, and built an interactive Tableau dashboard (revenue, order volume, profit margin) with Excel-based data validation checks.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications" class="section section-alt">
+    <div class="wrap">
+      <p class="section-label reveal">Certifications</p>
+      <h2 class="reveal">Certifications</h2>
+      <ul class="cert-list reveal">
+        <li>
+          <span class="cert-name">Excel Skills Certification</span>
+          <span class="cert-issuer">SkillCourse — edu.skillcourse.in</span>
+        </li>
+        <li>
+          <span class="cert-name">Power BI Skills Certification</span>
+          <span class="cert-issuer">SkillCourse — edu.skillcourse.in</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education" class="section">
+    <div class="wrap">
+      <p class="section-label reveal">Education</p>
+      <h2 class="reveal">Education</h2>
+      <div class="reveal">
+        <h3>Bachelor of Computer Applications (BCA)</h3>
+        <p class="edu-meta">Vapi, Gujarat, India · Expected graduation: July 2028</p>
+        <div class="coursework">
+          <span class="tag tag-light">Statistics</span>
+          <span class="tag tag-light">DBMS</span>
+          <span class="tag tag-light">Data Structures</span>
+          <span class="tag tag-light">Programming Fundamentals</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESUME -->
+  <section id="resume" class="section section-alt">
+    <div class="wrap">
+      <p class="section-label reveal">Resume</p>
+      <h2 class="reveal">Get the full picture</h2>
+      <div class="resume-panel reveal">
+        <a href="assets/Shaikh_Abdul_Rehman_Resume.pdf" target="_blank" rel="noopener" class="resume-thumb">
+          <img src="assets/images/resume-preview.jpg" alt="Preview of Shaikh Abdul Rehman's resume, page one">
+        </a>
+        <div class="resume-text">
+          <h3>Full resume, one click away</h3>
+          <p>Every skill, project, and detail on this page, laid out as a single ATS-friendly PDF page — ready to download, forward, or attach to an application.</p>
+          <a class="btn btn-teal" href="assets/Shaikh_Abdul_Rehman_Resume.pdf" download>
+            Download resume (PDF)
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="wrap">
+      <p class="section-label reveal">Contact</p>
+
+      <div class="contact-cta reveal">
+        <h2>Open to Data Analyst, Business Analyst &amp; freelance work</h2>
+        <p>Full-time, entry-level, or project-based — flexible on location and schedule. The fastest way to reach me is WhatsApp.</p>
+        <div class="cta-row" style="margin-bottom:0;">
+          <a class="btn btn-whatsapp" id="whatsapp-cta-2" href="#" target="_blank" rel="noopener">Message on WhatsApp</a>
+          <a class="btn btn-light" href="mailto:abdulrehmanshaikhwork@gmail.com">Send an email</a>
+          <a class="btn btn-light" href="assets/Shaikh_Abdul_Rehman_Resume.pdf" download>Download resume</a>
+        </div>
+      </div>
+
+      <ul class="contact-list reveal">
+        <li>
+          <span class="contact-label">Phone</span>
+          <a href="tel:+919173785567">+91 91737 85567</a>
+        </li>
+        <li>
+          <span class="contact-label">Email</span>
+          <a href="mailto:abdulrehmanshaikhwork@gmail.com">abdulrehmanshaikhwork@gmail.com</a>
+        </li>
+        <li>
+          <span class="contact-label">LinkedIn</span>
+          <a href="https://linkedin.com/in/abdul-rehman-shaikh-a690a8399" target="_blank" rel="noopener">linkedin.com/in/abdul-rehman-shaikh-a690a8399</a>
+        </li>
+        <li>
+          <span class="contact-label">GitHub</span>
+          <a href="https://github.com/abdulrehmanshaikhwork" target="_blank" rel="noopener">github.com/abdulrehmanshaikhwork</a>
+        </li>
+        <li>
+          <span class="contact-label">Location</span>
+          <span>Vapi, Gujarat, India</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>© 2026 Shaikh Abdul Rehman</footer>
+</main>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close image">✕</button>
+  <img id="lightboxImg" src="" alt="">
+  <span class="lightbox-cap mono" id="lightboxCap"></span>
+</div>
+
+<script>
+  // ---------- WhatsApp deep links (two different messages) ----------
+  (function(){
+    var phone = "919173785567";
+
+    var generalMsg = "Hi Abdul Rehman, I came across your portfolio and would like to talk to you about a Data Analyst / Business Analyst opportunity.";
+    var freelanceMsg = "Hi Abdul Rehman, I'd like to hire you as a freelancer for Excel / Data Analyst / Business Analyst work.";
+
+    var generalUrl = "https://wa.me/" + phone + "?text=" + encodeURIComponent(generalMsg);
+    var freelanceUrl = "https://wa.me/" + phone + "?text=" + encodeURIComponent(freelanceMsg);
+
+    ["whatsapp-cta", "whatsapp-cta-2", "whatsapp-nav"].forEach(function(id){
+      var el = document.getElementById(id);
+      if(el) el.setAttribute("href", generalUrl);
+    });
+    var freelanceEl = document.getElementById("whatsapp-freelance");
+    if(freelanceEl) freelanceEl.setAttribute("href", freelanceUrl);
+  })();
+
+  // ---------- Hero role rotator ----------
+  (function(){
+    var el = document.getElementById("roleRotator");
+    if(!el) return;
+    var roles = ["Data Analyst", "Business Analyst", "Freelance Data Consultant"];
+    var i = 0;
+    var prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if(prefersReduced) return;
+    el.style.transition = "opacity 0.25s ease";
+    setInterval(function(){
+      i = (i + 1) % roles.length;
+      el.style.opacity = 0;
+      setTimeout(function(){
+        el.textContent = roles[i];
+        el.style.opacity = 1;
+      }, 250);
+    }, 2600);
+  })();
+
+  // ---------- KPI count-up ----------
+  (function(){
+    var prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var nums = document.querySelectorAll(".kpi-num");
+
+    function setFinal(el){
+      var target = parseFloat(el.getAttribute("data-target"));
+      var decimals = parseInt(el.getAttribute("data-decimal") || "0", 10);
+      var prefix = el.getAttribute("data-prefix") || "";
+      var suffix = el.getAttribute("data-suffix") || "";
+      el.textContent = prefix + target.toLocaleString(undefined, {minimumFractionDigits:decimals, maximumFractionDigits:decimals}) + suffix;
+    }
+
+    if(prefersReduced){ nums.forEach(setFinal); return; }
+
+    function animate(el){
+      var target = parseFloat(el.getAttribute("data-target"));
+      var decimals = parseInt(el.getAttribute("data-decimal") || "0", 10);
+      var prefix = el.getAttribute("data-prefix") || "";
+      var suffix = el.getAttribute("data-suffix") || "";
+      var duration = 900;
+      var start = null;
+      function step(ts){
+        if(!start) start = ts;
+        var progress = Math.min((ts - start) / duration, 1);
+        var eased = 1 - Math.pow(1 - progress, 3);
+        var value = target * eased;
+        el.textContent = prefix + value.toLocaleString(undefined, {minimumFractionDigits:decimals, maximumFractionDigits:decimals}) + suffix;
+        if(progress < 1){ requestAnimationFrame(step); } else { setFinal(el); }
+      }
+      requestAnimationFrame(step);
+    }
+    nums.forEach(animate);
+  })();
+
+  // ---------- Scroll-reveal ----------
+  (function(){
+    var prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var items = document.querySelectorAll(".reveal");
+    if(prefersReduced || !("IntersectionObserver" in window)){
+      items.forEach(function(el){ el.classList.add("is-visible"); });
+      return;
+    }
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry, idx){
+        if(entry.isIntersecting){
+          var el = entry.target;
+          var delay = Math.min(idx * 40, 200);
+          setTimeout(function(){ el.classList.add("is-visible"); }, delay);
+          observer.unobserve(el);
+        }
+      });
+    }, { threshold: 0.12 });
+    items.forEach(function(el){ observer.observe(el); });
+  })();
+
+  // ---------- Scroll progress bar ----------
+  (function(){
+    var bar = document.getElementById("scrollProgress");
+    if(!bar) return;
+    window.addEventListener("scroll", function(){
+      var h = document.documentElement;
+      var scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+      bar.style.width = scrolled + "%";
+    }, { passive: true });
+  })();
+
+  // ---------- Scrollspy for nav links ----------
+  (function(){
+    var links = document.querySelectorAll(".nav-links a");
+    var sections = Array.from(links).map(function(a){
+      return document.querySelector(a.getAttribute("href"));
+    }).filter(Boolean);
+    if(!("IntersectionObserver" in window) || sections.length === 0) return;
+
+    var map = {};
+    links.forEach(function(a){ map[a.getAttribute("href")] = a; });
+
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        var id = "#" + entry.target.id;
+        if(entry.isIntersecting && map[id]){
+          links.forEach(function(a){ a.classList.remove("active"); });
+          map[id].classList.add("active");
+        }
+      });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+
+    sections.forEach(function(s){ observer.observe(s); });
+  })();
+
+  // ---------- Mobile menu ----------
+  (function(){
+    var toggle = document.getElementById("navToggle");
+    var menu = document.getElementById("mobileMenu");
+    if(!toggle || !menu) return;
+    function close(){
+      menu.classList.remove("open");
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.textContent = "☰";
+    }
+    toggle.addEventListener("click", function(){
+      var isOpen = menu.classList.toggle("open");
+      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      toggle.textContent = isOpen ? "✕" : "☰";
+    });
+    menu.querySelectorAll("a").forEach(function(a){
+      a.addEventListener("click", close);
+    });
+  })();
+
+  // ---------- Lightbox gallery ----------
+  (function(){
+    var items = document.querySelectorAll(".gallery-item");
+    var lightbox = document.getElementById("lightbox");
+    var img = document.getElementById("lightboxImg");
+    var cap = document.getElementById("lightboxCap");
+    var closeBtn = document.getElementById("lightboxClose");
+    if(!lightbox) return;
+
+    function open(src, caption){
+      img.setAttribute("src", src);
+      img.setAttribute("alt", caption);
+      cap.textContent = caption;
+      lightbox.classList.add("open");
+    }
+    function close(){
+      lightbox.classList.remove("open");
+      img.setAttribute("src", "");
+    }
+
+    items.forEach(function(el){
+      el.addEventListener("click", function(){
+        open(el.getAttribute("data-full"), el.getAttribute("data-cap"));
+      });
+    });
+    closeBtn.addEventListener("click", close);
+    lightbox.addEventListener("click", function(e){
+      if(e.target === lightbox) close();
+    });
+    document.addEventListener("keydown", function(e){
+      if(e.key === "Escape") close();
+    });
+  })();
+</script>
+
+</body>
+</html>
